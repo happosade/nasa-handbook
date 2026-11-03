@@ -1,0 +1,74 @@
+\documentclass{nasa-handbook} % [letter] for US Letter
+
+\nhsetup{
+  doc         = {[XX2A]-03-BLOCK I-(1)},
+  title       = {[PROGRAM] OPERATIONS HANDBOOK},
+  part        = {SYSTEMS DATA},
+  section     = 2,
+  subsection  = 2.1,
+  subsystem   = {[SUBSYSTEM NAME]},
+  tab         = {[TAB]},
+  basic date  = {[1 January 1970]},
+  change date = {},
+  mission     = {},
+}
+
+\begin{document}
+
+\nhopener
+
+\begin{nhpara}{2.1.1}{INTRODUCTION.}
+[Three lines: what the subsystem is, the one idea the reader must leave with, and a pointer to the hero figure (figure 2.1-1).]
+\end{nhpara}
+
+% FIGURE 2.1-1: the hero, 66-72 mm tall. Units are mm, origin top left, y down,
+% 180 wide. Arguments: [top y], height, number, caption, figure code.
+\begin{nhfigure}{66}{2.1-1}{[Title Case Caption]}{[TAB]-501A}
+  \path[panel] (1.5,2.5) rectangle (81.5,62.5);
+  \node[lbl-s] at (3.4,5.6) {[PANEL NAME]};
+  \path[box] (8,20) rectangle (34,31);
+  \node[lbl,c] at (21,24.8) {[COMPONENT]};
+  \node[lbl-s,c] at (21,27.8) {[ONE DETAIL]};
+  \path[wa] (34,25.5) -- (55.6,25.5);
+  \node[lbl-s] at (36,24.4) {[SIGNAL]};
+  \path[box] (56,20) rectangle (78,31);
+  \node[lbl,c] at (67,26.2) {[NEXT]};
+\end{nhfigure}
+
+\vspace{2.2mm}
+\begin{nhpara}{2.1.2}{FUNCTIONAL DESCRIPTION.}
+[Four lines: how it works, in the order things happen, naming controls in CAPS as placarded (figure 2.1-2).]
+\end{nhpara}
+
+\begin{nhsubpara}[6.8mm]{2.1.2.1}{[Key Mechanism].}
+[Two lines on the single most interesting mechanism, with its rule or formula in \nowrap{one unbroken piece}.]
+\end{nhsubpara}
+
+% FIGURE 2.1-2: secondary, 44-50 mm tall. [-3.6]{50} would span y -3.6 to 46.4.
+\begin{nhfigure}{46}{2.1-2}{[Title Case Caption]}{[TAB]-502A}
+  \path[w] (10,10) -- (170,10);
+\end{nhfigure}
+
+\begin{nhlower}
+  \begin{nhpara}{2.1.3}{PERFORMANCE AND DESIGN DATA.}\end{nhpara}
+  \begin{nhtable}{2.1-1}{[Title]}
+    \nhrow{[Parameter]}{[value with units]}
+    \nhrow{[Parameter]}{[value with units]}
+    \nhrow{[Parameter]}{[value with units]}
+    \nhrow{[Parameter]}{[value with units]}
+    \nhrow{[Parameter]}{[value with units]}
+    \nhrow{[Parameter]}{[value with units]}
+    \nhrow{[Parameter]}{[value with units]}
+    \nhrow{[Parameter]}{[value with units]}
+  \end{nhtable}
+\nhrightcolumn
+  \nhnotice{CAUTION}{[At most three lines: the one way to lose data, damage equipment or hurt someone.]}
+  \begin{nhchecklist}{[PROCEDURE NAME]}{[WHO]}
+    \nhstep{1}{[CONTROL] - [action]}
+    \nhstep{2}{[CONTROL] - [action]}
+    \nhverify{[STATE] - [expected]}
+    \nhstep{3}{[CONTROL] - [action]}
+  \end{nhchecklist}
+\end{nhlower}
+
+\end{document}

@@ -1,0 +1,303 @@
+\documentclass{nasa-handbook}
+
+\nhsetup{
+  doc         = {JN2A-03-BLOCK I-(1)},
+  title       = {PROJECT JANUS OPERATIONS HANDBOOK},
+  section     = 2,
+  subsection  = 2.4,
+  subsystem   = {APERTURE GENERATION SUBSYSTEM},
+  tab         = AGS,
+  basic date  = {15 March 1971},
+  change date = {9 August 1971},
+}
+\setcounter{page}{3}
+
+\begin{document}
+
+\nhopener
+
+\begin{nhpara}{2.4.1}{INTRODUCTION.}
+The aperture generation subsystem (AGS) of the handheld aperture projector (HAP) produces a conjugate pair of planar apertures, designated A and B, on qualified surfaces up to 300 meters (984 feet) away. Matter entering either aperture exits the other without traversing the intervening space (figure 2.4-1).
+\end{nhpara}
+
+\begin{nhfigure}{67.4}{2.4-1}{Handheld Aperture Projector, General Arrangement}{AGS-501B}
+  \path[cl] (12,30) -- (141,30);
+  \path[of,from svg] svg{M24,21 L74,19.5 L76,20.4 L76,39.6 L74,40.5 L24,39 C19.5,39 17,35 17,30 C17,25 19.5,21 24,21 Z};
+  \path[t] (22.6,21.3) -- (22.6,38.7);
+  \path[t] (19.6,24.6) circle[radius=0.55];
+  \path[t] (19.6,35.4) circle[radius=0.55];
+  \path[t,from svg] svg{M22.6,33.4 L74,33.4};
+  \path[hid] (25,23.4) rectangle (40,32);
+  \path[o,from svg] svg{M26.6,20.95 A1.35,1.35 0 0 1 29.3,20.87};
+  \path[o,from svg] svg{M31.4,20.8 A1.35,1.35 0 0 1 34.1,20.72};
+  \path[of,rounded corners=0.8mm] (42,15.4) rectangle (65,19.8);
+  \path[of] (65,15.9) rectangle (66.6,19.3);
+  \path[t] (45,17.6) -- (62,17.6);
+  \path[t] (58,23.4) -- (59,30.6);
+  \path[t] (60,23.3) -- (61,30.6);
+  \path[t] (62,23.2) -- (63,30.6);
+  \path[t] (64,23.2) -- (65,30.6);
+  \path[t] (66,23.1) -- (67,30.6);
+  \path[t] (68,23) -- (69,30.6);
+  \path[of,rounded corners=0.4mm] (47.5,34.8) rectangle (52.9,37.8);
+  \path[o] (50.2,36.3) -- (52.4,32.6);
+  \path[of] (52.6,32.3) circle[radius=0.65];
+  \path[of,from svg] svg{M35,39.2 L46.6,39.6 L43.8,60.2 C43.4,62 42,62.6 40.2,62.6 L34,62.6 C32.4,62.6 31.6,61.6 31.8,60 Z};
+  \path[t] (34.1,45) -- (44.9,45.3);
+  \path[t] (33.8,47.5) -- (44.6,47.8);
+  \path[t] (33.4,50) -- (44.2,50.3);
+  \path[t] (33.1,52.5) -- (43.9,52.8);
+  \path[t] (32.7,55) -- (43.5,55.3);
+  \path[t] (32.4,57.5) -- (43.2,57.8);
+  \path[o,from svg] svg{M58,40.3 L58,43.2 C58,47.6 52.4,49.4 45.6,47.6};
+  \path[of,from svg] svg{M50.6,40.1 C49.4,42.6 49.9,44.7 52.1,45.7 L52.9,44.9 C51.4,43.9 51.2,42 52.2,40.2 Z};
+  \path[of] (76,16) rectangle (79,44);
+  \path[of] (97,16) rectangle (100,44);
+  \path[o] (79,17.6) -- (97,17.6);
+  \path[o] (79,42.4) -- (97,42.4);
+  \path[t] (79,16.5) -- (97,16.5);
+  \path[t] (79,43.5) -- (97,43.5);
+  \path[t] (80.6,21.4) -- (83,19.2);
+  \path[t] (81.6,22.4) -- (84.6,19.6);
+  \path[t] (92.4,40.4) -- (95.2,37.8);
+  \path[t] (93.6,40.8) -- (95.8,38.8);
+  \path[t] (86,27.6) -- (79,18.8);
+  \path[t] (86,32.4) -- (79,41.2);
+  \path[t] (91,27.6) -- (97,18.8);
+  \path[t] (91,32.4) -- (97,41.2);
+  \path[hid] (88.5,30) circle[radius=4.2];
+  \path[of] (88.5,30) circle[radius=2.5];
+  \path[dot] (88.5,30) circle[radius=1.15];
+  \path[of] (100.4,17) rectangle (102.4,43);
+  \path[of] (102.9,18.2) rectangle (104.9,41.8);
+  \path[of] (105.4,19.4) rectangle (107.4,40.6);
+  \path[of] (107.9,20.6) rectangle (109.9,39.4);
+  \path[of] (109.9,26) rectangle (118.1,34);
+  \path[o,from svg] svg{M118.1,26.6 Q119.6,30 118.1,33.4};
+  \path[t] (112,26) -- (112,34);
+  \path[t] (115,26) -- (115,34);
+  \path[of,from svg] svg{M109.6,21.4 C116.5,17.4 124.6,18 130.2,24.6 L128.7,25.7 C123.6,21.1 117.2,21.1 110,24.1 Z};
+  \path[of,from svg] svg{M109.6,38.6 C116.5,42.6 124.6,42 130.2,35.4 L128.7,34.3 C123.6,38.9 117.2,38.9 110,35.9 Z};
+  \path[of] (129.7,25.1) circle[radius=0.85];
+  \path[of] (129.7,34.9) circle[radius=0.85];
+  \path[cut] (103.9,12.6) -- (103.9,47.4);
+  \path[w] (103.9,12.6) -- (107.6,12.6);
+  \path[dot,from svg] svg{M107.4,11.6 L109.4,12.6 L107.4,13.6 Z};
+  \path[w] (103.9,47.4) -- (107.6,47.4);
+  \path[dot,from svg] svg{M107.4,46.4 L109.4,47.4 L107.4,48.4 Z};
+  \node[lbl-b] at (110.4,13.5) {A};
+  \node[lbl-b] at (110.4,48.3) {A};
+  \node[lbl] at (11,8.6) {STATUS LAMPS A, B};
+  \path[ld] (22,9.6) -- (27.6,19.3);
+  \node[lbl] at (38.5,5.2) {RANGEFINDER (T\&R)};
+  \path[ld] (47,6.2) -- (50,15.2);
+  \node[lbl] at (58.5,9.6) {CONTAINMENT CHAMBER};
+  \node[lbl] at (58.5,12.2) {(FUSED SILICA)};
+  \path[ld] (78,10.4) -- (84,17.4);
+  \node[lbl] at (84,5.2) {SINGULARITY CORE};
+  \path[ld] (90,6.2) -- (88.8,27.4);
+  \node[lbl] at (111,7.4) {FIELD COIL ASSY L1–L4};
+  \path[ld] (113,8.4) -- (106.4,19.2);
+  \node[lbl] at (128.6,13.8) {FIELD SHAPING};
+  \node[lbl] at (128.6,16.4) {PRONG (3)};
+  \path[ld] (131,17.4) -- (126.6,21.4);
+  \node[lbl-s] at (132,28.6) {+X};
+  \node[lbl] at (12.8,46.6) {ACCESS COVER,};
+  \node[lbl] at (12.8,49.2) {POWER CELL};
+  \path[ld] (18,44.6) -- (19.8,37.4);
+  \node[lbl] at (58.4,51.4) {APERTURE SEL SW S1};
+  \node[lbl] at (58.4,54) {(A – OFF – B)};
+  \path[ld] (57.8,50) -- (53.2,38);
+  \node[lbl] at (58.4,59.4) {TRIGGER S2};
+  \path[ld] (57.8,58) -- (52.4,45.6);
+  \node[lbl] at (68,46.6) {COOLING LOUVERS (6)};
+  \path[ld] (71,44.6) -- (66.4,30.8);
+  \node[lbl] at (84,52.2) {CORE SUSPENSION STRUT (4)};
+  \path[ld] (88,50.4) -- (89.6,35);
+  \node[lbl] at (106.6,56.6) {EMITTER APERTURE};
+  \path[ld] (116.4,54.4) -- (118.6,33.6);
+  \node[lbl-s] at (26,35.6) {POWER CELL};
+  \path[t] (17,39.6) -- (17,66.4);
+  \path[t] (130.6,36) -- (130.6,66.4);
+  \path[dim] (17,65.2) -- (63.6,65.2);
+  \path[dim] (130.6,65.2) -- (83.6,65.2);
+  \node[lbl] at (65.2,66) {27.60 [701]};
+  \path[t] (41,15.4) -- (6.4,15.4);
+  \path[t] (31,62.6) -- (6.4,62.6);
+  \path[dim] (8,15.4) -- (8,34.4);
+  \path[dim] (8,62.6) -- (8,43.8);
+  \node[lbl,up] at (8.9,43.4) {9.25 [235]};
+  \begin{scope}[shift={(160,29)}]
+    \path[hatch] (0,0) circle[radius=13.4];
+    \path[of] (0,0) circle[radius=10.6];
+    \path[o] (0,0) circle[radius=13.4];
+    \path[of] (0,0) circle[radius=4.1];
+    \path[t] (0,0) circle[radius=2.5];
+    \path[dot] (0,0) circle[radius=0.9];
+    \path[of,rounded corners=1.1mm] (-1.15,-10.2) rectangle (1.15,-4.8);
+    \path[of,rounded corners=1.1mm,rotate=-120] (-1.15,-10.2) rectangle (1.15,-4.8);
+    \path[of,rounded corners=1.1mm,rotate=-240] (-1.15,-10.2) rectangle (1.15,-4.8);
+    \path[cl] (-16.4,0) -- (16.4,0);
+    \path[cl] (0,-16.4) -- (0,16.4);
+    \node[lbl-s] at (9,-12.6) {L2};
+  \end{scope}
+  \node[lbl-b,c] at (160,49.6) {SECTION A–A};
+  \node[lbl-s,c] at (160,52.4) {LOOKING FWD, SCALE 1/2};
+  \begin{scope}[shift={(150,63.6)}]
+    \path[wa] (0,0) -- (8.4,0);
+    \path[wa] (0,0) -- (0,-5.6);
+    \path[of] (0,0) circle[radius=0.9];
+    \path[dot] (0,0) circle[radius=0.28];
+    \node[lbl-s] at (9.2,0.8) {+X};
+    \node[lbl-s] at (-1.2,-6.4) {+Z};
+    \node[lbl-s] at (-4.8,2.8) {+Y};
+  \end{scope}
+\end{nhfigure}
+
+\vspace{2.2mm}
+\begin{nhpara}{2.4.2}{FUNCTIONAL DESCRIPTION.}
+With AGS MAIN A and B closed, the power cells energize the phase-lock oscillator (PLO) and the AGS RDY talkback goes gray. With APERTURE SEL at A or B, the trigger commands the field coil driver (FCD) to discharge through coils L1 through L4; the prongs collimate the field into a beam that forms the selected aperture on a qualified surface (figure 2.4-2). A second aperture of the same designation collapses the first.
+\end{nhpara}
+
+\begin{nhsubpara}[6.8mm]{2.4.2.1}{Momentum Conservation.}
+An object traversing the aperture pair leaves along the exit surface normal with its entry speed unchanged \nowrap{(|\textit{v}\textsubscript{exit}| = |\textit{v}\textsubscript{entry}|)}.
+\end{nhsubpara}
+
+\begin{nhfigure}[-1.8]{48.3}{2.4-2}{AGS Functional Diagram}{AGS-502A}
+  \path[box] (3,5) rectangle (22,16);
+  \node[lbl,c] at (12.5,9.6) {POWER CELL A};
+  \node[lbl-s,c] at (12.5,12.8) {28 VDC  2.6 A-H};
+  \path[box] (3,25) rectangle (22,36);
+  \node[lbl,c] at (12.5,29.6) {POWER CELL B};
+  \node[lbl-s,c] at (12.5,32.8) {28 VDC  2.6 A-H};
+  \path[w] (22,10.5) -- (28.6,10.5);
+  \path[of] (29.2,10.5) circle[radius=0.6];
+  \path[of] (33.8,10.5) circle[radius=0.6];
+  \path[w,from svg] svg{M29.4,9.6 Q31.5,7.4 33.6,9.6};
+  \path[w] (31.5,8.1) -- (31.5,6.6);
+  \path[w] (30.4,6.6) -- (32.6,6.6);
+  \path[w] (34.4,10.5) -- (42,10.5);
+  \node[lbl-s,c] at (31.5,5.4) {CB1};
+  \node[lbl-s,c] at (31.5,13.2) {15A};
+  \node[lbl-s,c] at (31.5,15.6) {AGS MAIN A};
+  \path[w] (22,30.5) -- (28.6,30.5);
+  \path[of] (29.2,30.5) circle[radius=0.6];
+  \path[of] (33.8,30.5) circle[radius=0.6];
+  \path[w,from svg] svg{M29.4,29.6 Q31.5,27.4 33.6,29.6};
+  \path[w] (31.5,28.1) -- (31.5,26.6);
+  \path[w] (30.4,26.6) -- (32.6,26.6);
+  \path[w] (34.4,30.5) -- (42,30.5);
+  \node[lbl-s,c] at (31.5,25.4) {CB2};
+  \node[lbl-s,c] at (31.5,33.2) {15A};
+  \node[lbl-s,c] at (31.5,35.6) {AGS MAIN B};
+  \path[box] (42,4) rectangle (44,43.6);
+  \node[lbl-s,c,up] at (40.9,23.6) {AGS BUS};
+  \path[dot] (42,10.5) circle[radius=0.55];
+  \path[dot] (42,30.5) circle[radius=0.55];
+  \path[w] (44,6) -- (47,6) -- (47,1.8) -- (127,1.8) -- (127,6);
+  \path[dot] (44,6) circle[radius=0.5];
+  \node[lbl-s] at (100,1) {28 VDC MAIN};
+  \path[panel] (49.5,4.2) rectangle (77.5,39.2);
+  \node[lbl-s,c] at (63.5,38.2) {PANEL 1 (HANDGRIP)};
+  \path[w] (44,32) -- (54,32);
+  \path[dot] (44,32) circle[radius=0.5];
+  \path[of] (54.6,32) circle[radius=0.6];
+  \path[of] (59.4,32) circle[radius=0.6];
+  \path[w] (53.8,29.8) -- (60.2,29.8);
+  \path[w] (57,29.8) -- (57,27.8);
+  \path[w] (55.8,27.8) -- (58.2,27.8);
+  \node[lbl-s,c] at (57,35.2) {S2 TRIGGER};
+  \path[w] (60,32) -- (62.4,32) -- (62.4,21.4) -- (57.6,21.4) -- (57.6,19.2);
+  \node[lbl-s] at (51,7.6) {S1 APERTURE SEL};
+  \path[of] (57.6,18.6) circle[radius=0.6];
+  \path[w] (58,18.2) -- (64.5,12.8);
+  \path[of] (65.2,12.4) circle[radius=0.6];
+  \path[of] (65.6,18.6) circle[radius=0.6];
+  \path[of] (65.2,24.8) circle[radius=0.6];
+  \node[lbl-s] at (64.6,10.8) {A};
+  \node[lbl-s] at (66.8,19.4) {OFF};
+  \node[lbl-s] at (64.6,27.8) {B};
+  \path[w] (65.8,12.4) -- (80.6,12.4) -- (80.6,9) -- (84,9);
+  \path[w] (65.8,24.8) -- (82,24.8) -- (82,15) -- (84,15);
+  \node[lbl-s] at (68.4,11.6) {SEL A};
+  \node[lbl-s] at (68.4,24) {SEL B};
+  \begin{scope}[shift={(77,12.4)}]
+    \path[of] (-1.4,0) -- (-0.7,-1.2) -- (0.7,-1.2) -- (1.4,0) -- (0.7,1.2) -- (-0.7,1.2) -- cycle;
+    \node[tag,c] at (0,0.7) {1};
+  \end{scope}
+  \begin{scope}[shift={(77,24.8)}]
+    \path[of] (-1.4,0) -- (-0.7,-1.2) -- (0.7,-1.2) -- (1.4,0) -- (0.7,1.2) -- (-0.7,1.2) -- cycle;
+    \node[tag,c] at (0,0.7) {2};
+  \end{scope}
+  \path[w] (44,43.6) -- (67.8,43.6);
+  \path[dot] (44,43.6) circle[radius=0.5];
+  \path[bp] (70,43.6) circle[radius=2.2];
+  \path[w] (120,18) -- (120,22.6) -- (113,22.6) -- (113,40.4) -- (70,40.4) -- (70,41.4);
+  \node[lbl-s] at (114,25.4) {RDY};
+  \node[lbl-s] at (73.4,43.4) {AGS RDY TB};
+  \node[lbl-s] at (73.4,45.8) {GRAY = READY, BP = CHARGING};
+  \path[box] (84,5) rectangle (109,18);
+  \node[lbl,c] at (96.5,9.6) {PHASE-LOCK};
+  \node[lbl,c] at (96.5,12.4) {OSCILLATOR};
+  \node[lbl-s,c] at (96.5,15.4) {(PLO)};
+  \path[box] (84,28) rectangle (109,39);
+  \node[lbl,c] at (96.5,32.6) {RANGEFINDER};
+  \node[lbl-s,c] at (96.5,35.6) {(T\&R)  0–300 M};
+  \path[wa] (96.5,28) -- (96.5,18.4);
+  \node[lbl-s] at (97.6,23.6) {RANGE};
+  \path[box] (117,6) rectangle (137,18);
+  \node[lbl,c] at (127,10.6) {FIELD COIL};
+  \node[lbl,c] at (127,13.4) {DRIVER};
+  \node[lbl-s,c] at (127,16.2) {(FCD)};
+  \path[wa] (109,11.5) -- (116.6,11.5);
+  \node[lbl-s] at (110.2,10.2) {PHASE};
+  \path[w] (137,12) -- (141,12);
+  \path[w,from svg] svg{M141,12 a1.4,1.4 0 0 1 2.8,0 a1.4,1.4 0 0 1 2.8,0 a1.4,1.4 0 0 1 2.8,0 a1.4,1.4 0 0 1 2.8,0};
+  \path[w] (152.2,12) -- (154,12);
+  \node[lbl-s,c] at (146.6,8.8) {L1–L4};
+  \node[lbl-s,c] at (146.6,15.6) {4.2 MW PK};
+  \path[wa] (154,12) -- (154,23.6);
+  \path[box] (117,28) rectangle (137,39);
+  \node[lbl,c] at (127,32.6) {CONTAINMENT};
+  \node[lbl-s,c] at (127,35.6) {CHAMBER  3.2 K};
+  \path[wa] (137,31) -- (147.6,31);
+  \node[lbl-s] at (138.4,29.8) {FLUX};
+  \path[box] (148,24) rectangle (160,35);
+  \node[lbl,c] at (154,30.2) {EMITTER};
+  \path[wa] (160,27) -- (167.6,15);
+  \path[wa] (160,32) -- (167.6,36.6);
+  \path[box] (172.2,10.6) ellipse[x radius=3.5,y radius=6];
+  \path[bp,line width=0.45mm] (172.2,37.6) ellipse[x radius=3.5,y radius=5.6];
+  \node[lbl-b,c] at (172.2,11.5) {A};
+  \path[fill=white] (170.6,35.8) rectangle (173.8,39);
+  \node[lbl-b,c] at (172.2,38.5) {B};
+  \node[lbl-s,c] at (172.2,19.4) {APERTURE};
+  \node[lbl-s,c] at (172.2,29.6) {APERTURE};
+\end{nhfigure}
+
+\begin{nhlower}
+  \begin{nhpara}{2.4.3}{PERFORMANCE AND DESIGN DATA.}\end{nhpara}
+  \begin{nhtable}{2.4-1}{AGS Performance Data}
+    \nhrow{Aperture size, major × minor axis}{2.03 × 1.22 m (80 × 48 in.)}
+    \nhrow{Maximum projection range}{300 m (984 ft)}
+    \nhrow{Aperture formation time}{0.42 sec}
+    \nhrow{Surface flatness, minimum}{±0.5 deg over 2.1 m}
+    \nhrow{Peak field power}{4.2 MW for 3 msec}
+    \nhrow{Power cells}{2 × 28 Vdc, 2.6 A-h}
+    \nhrow{Mass, HAP with cells}{4.1 kg (9.0 lb)}
+    \nhrow{Operating temperature}{−40° to +71° C}
+  \end{nhtable}
+\nhrightcolumn
+  \nhnotice{WARNING}{Do not place apertures A and B in vertical alignment. A crewman falling through the pair cycles until terminal velocity, in about 12 sec.}
+  \begin{nhchecklist}{AGS ACTIVATION}{HAP}
+    \nhstep{1}{cb AGS MAIN A,B - close (2)}
+    \nhstep{2}{AGS RDY tb - bp, then gray}
+    \nhstep{3}{APERTURE SEL - A}
+    \nhstep{4}{Aim at qualified surface}
+    \nhstep{5}{TRIGGER - press, release}
+    \nhverify{STATUS LAMP A - on}
+    \nhstep{6}{APERTURE SEL - B, rpt 4,5}
+  \end{nhchecklist}
+\end{nhlower}
+
+\end{document}

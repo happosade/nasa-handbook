@@ -1,0 +1,474 @@
+\documentclass{nasa-handbook}
+
+\nhsetup{
+  doc         = {SH2A-03-BLOCK I-(1)},
+  title       = {ARTEMIS SURFACE HABITAT OPERATIONS HANDBOOK},
+  section     = 2,
+  subsection  = 2.12,
+  subsystem   = {PRESSURIZED EXTRACTION UNIT},
+  tab         = PEU,
+  basic date  = {12 March 2029},
+  change date = {4 September 2029},
+}
+
+\begin{document}
+
+\nhopener
+
+\begin{nhpara}{2.12.1}{INTRODUCTION.}
+The pressurized extraction unit (PEU) prepares espresso in the surface habitat galley. At the 56.5 kPa (8.2 psia) cabin pressure water boils at 84 °C (183 °F), below the 93 °C (199 °F) brew temperature, so the PEU brews at sea-level pressure in a sealed circuit and releases the extract to the cabin only after cooling it (figure 2.12-1).
+\end{nhpara}
+
+\begin{nhfigure}{68}{2.12-1}{Pressurized Extraction Unit, General Arrangement}{PEU-501A}
+  \path[of,from svg] svg{M27,14 L93,14 L98,19 L98,26 L80,26 L80,52 L27,52 Q26,52 26,51 L26,15 Q26,14 27,14 Z};
+  \path[t] (80,14) -- (80,26);
+  \path[t] (28.2,16.2) circle[radius=0.45];
+  \path[t] (77.8,16.2) circle[radius=0.45];
+  \path[t] (28.2,49.8) circle[radius=0.45];
+  \path[t] (77.8,49.8) circle[radius=0.45];
+  \path[t] (82.2,24.2) circle[radius=0.45];
+  \path[hid] (30,18) rectangle (46,25.6);
+  \node[lbl-s,c] at (38,22.6) {CONTROLLER};
+  \path[hid] (52,18) rectangle (74,25.6);
+  \node[lbl-s,c] at (63,22.6) {THERMOBLOCK};
+  \path[hid] (30,40) rectangle (42,47.4);
+  \node[lbl-s,c] at (36,44.4) {PUMP P1};
+  \path[hid] (46,40) rectangle (62,47.4);
+  \node[lbl-s,c] at (54,44.4) {HX1 COOLER};
+  \path[hid] (66,40.6) rectangle (72,46);
+  \path[hid] (72,43.3) -- (76,43.3) -- (76,35.3) -- (80,35.3);
+  \path[of] (22.4,19) rectangle (26,23.4);
+  \path[of] (21.2,19.7) rectangle (22.4,22.7);
+  \path[t] (23.6,19) -- (23.6,23.4);
+  \path[t] (24.8,19) -- (24.8,23.4);
+  \path[of] (22.6,43) rectangle (26,45);
+  \path[of,rounded corners=0.3mm] (20.6,42.2) rectangle (22.6,45.8);
+  \path[of] (19.4,43.4) rectangle (20.6,44.6);
+  \path[of] (28.5,52) rectangle (33.5,53.4);
+  \path[of] (72.5,52) rectangle (77.5,53.4);
+  \path[of] (80,49.4) rectangle (98,52);
+  \path[t] (80.6,50.2) -- (97.4,50.2);
+  \begin{scope}[shift={(95.5,16.5)}]
+    \path[of,rounded corners=0.3mm] (-2.2,-1.1) rectangle (2.2,0);
+    \path[t] (-1.6,-0.55) -- (1.6,-0.55);
+  \end{scope}
+  \path[of,rounded corners=0.3mm] (98,21.6) rectangle (99.1,23.8);
+  \path[of] (84,26) rectangle (94,28.2);
+  \path[of] (83.2,28.2) rectangle (94.8,29);
+  \path[of,from svg] svg{M93.4,29.8 L100,30 L112.6,31.2 C114.4,31.4 114.4,33.6 112.6,33.7 L100,32.4 L93.4,32.2 Z};
+  \path[of,from svg] svg{M84.6,29 L93.4,29 L93.4,31.6 Q93.4,32.6 92.4,32.6 L85.6,32.6 Q84.6,32.6 84.6,31.6 Z};
+  \path[t] (84.6,29.9) -- (93.4,29.9);
+  \path[t] (104,30.7) -- (104,32.5);
+  \path[t] (106,30.9) -- (106,32.7);
+  \path[t] (108,31.1) -- (108,32.9);
+  \path[t] (110,31.3) -- (110,33.1);
+  \path[of] (80,34.4) rectangle (90,36.2);
+  \path[of] (88.2,36.2) rectangle (90,37.8);
+  \path[of,from svg] svg{M83.8,41.4 L94.2,41.4 L93.2,47.4 Q92.9,48.4 91.8,48.4 L86.2,48.4 Q85.1,48.4 84.8,47.4 Z};
+  \path[of] (86,48.4) rectangle (92,49.4);
+  \path[o,from svg] svg{M93.95,42.8 C96.8,42.6 96.9,46.2 93.4,46};
+  \path[o,from svg] svg{M82.4,49.4 L82.4,46 Q82.4,44.6 84.3,44.6};
+  \path[of] (86.69,21.19) -- (77.87,6.72) -- (76.93,7.28) -- (85.31,22.01) -- cycle;
+  \path[of] (77.4,7) circle[radius=1.6];
+  \path[of] (86,21.6) circle[radius=1.5];
+  \path[dot] (86,21.6) circle[radius=0.35];
+  \path[cut] (89,23.4) -- (89,33.8);
+  \path[w] (89,23.4) -- (92.7,23.4);
+  \path[dot,from svg] svg{M92.5,22.4 L94.5,23.4 L92.5,24.4 Z};
+  \path[w] (89,33.8) -- (92.7,33.8);
+  \path[dot,from svg] svg{M92.5,32.8 L94.5,33.8 L92.5,34.8 Z};
+  \node[lbl-b] at (95.3,24.3) {A};
+  \node[lbl-b] at (95.3,34.7) {A};
+  \node[lbl] at (46,5.6) {GROUP LOCK LEVER};
+  \node[lbl] at (46,8.2) {(LOCK – VENT – OPEN)};
+  \path[ld] (66,5) -- (75.7,6.6);
+  \node[lbl] at (90,8.6) {BREW PRESS GAUGE, 0–12 BAR};
+  \path[ld] (95.6,9.6) -- (96.2,15.3);
+  \node[lbl] at (11.6,27.6) {ELEC CONN};
+  \node[lbl] at (11.6,30.2) {J1, 120 VDC};
+  \path[ld] (18,25.4) -- (22.6,23.6);
+  \node[lbl] at (11.6,36.2) {POTABLE};
+  \node[lbl] at (11.6,38.8) {WATER QD};
+  \path[ld] (20.2,39.6) -- (21.4,42);
+  \node[lbl] at (103.4,21) {BREW PB};
+  \path[ld] (103,21.8) -- (99.4,22.6);
+  \node[lbl] at (103.4,27.2) {GROUP HEAD};
+  \path[ld] (103,26.6) -- (94.3,27.3);
+  \node[lbl] at (103.4,37.6) {PORTAFILTER};
+  \path[ld] (105.4,35.2) -- (106.4,32.8);
+  \node[lbl] at (103.4,41.4) {EXTRACT SPOUT};
+  \path[ld] (103,40.6) -- (90.3,37.4);
+  \node[lbl] at (103.4,45.6) {DEMITASSE, 80 ML};
+  \path[ld] (103,45) -- (97,44.6);
+  \node[lbl] at (103.4,51.6) {DRIP TRAY};
+  \path[ld] (103,51) -- (98.3,50.8);
+  \node[lbl] at (28.4,58.6) {SEAT TRACK FITTING (4)};
+  \path[ld] (31.2,56.2) -- (31,53.6);
+  \node[lbl] at (56,57.6) {BACK-PRESSURE};
+  \node[lbl] at (56,60.2) {VALVE BPV-2};
+  \path[ld] (62.4,55.2) -- (68.6,46.2);
+  \node[lbl] at (78,57.6) {CUP RESTRAINT};
+  \path[ld] (82.2,55.2) -- (82.4,47.6);
+  \path[t] (25.4,14) -- (6.6,14);
+  \path[t] (25.4,52) -- (6.6,52);
+  \path[dim] (8.2,14) -- (8.2,26.4);
+  \path[dim] (8.2,52) -- (8.2,39.8);
+  \node[lbl,up] at (9.1,38.6) {11.97 [304]};
+  \path[t] (26,52.6) -- (26,66.4);
+  \path[t] (98,52.6) -- (98,66.4);
+  \path[dim] (26,65.2) -- (55.4,65.2);
+  \path[dim] (98,65.2) -- (68.6,65.2);
+  \node[lbl,c] at (62,66) {22.68 [576]};
+  \begin{scope}[shift={(0,10)}]
+    \path[hatch] (138,8) rectangle (162,17);
+    \path[fill=white] (149.2,7.9) rectangle (150.8,14.5);
+    \path[fill=white] (142,14.4) rectangle (156,17.1);
+    \path[fill=white] (158.4,7.9) rectangle (159.8,17.1);
+    \path[o] (149.2,8) -- (138,8) -- (138,17) -- (142,17);
+    \path[o] (150.8,8) -- (158.4,8);
+    \path[o] (159.8,8) -- (162,8) -- (162,17) -- (159.8,17);
+    \path[o] (156,17) -- (158.4,17);
+    \path[o] (149.2,5.6) -- (149.2,14.4);
+    \path[o] (150.8,5.6) -- (150.8,14.4);
+    \path[o] (158.4,5.6) -- (158.4,17);
+    \path[o] (159.8,5.6) -- (159.8,17);
+    \path[o] (142,17) -- (142,14.4) -- (149.2,14.4);
+    \path[o] (150.8,14.4) -- (156,14.4) -- (156,17);
+    \path[hid] (142,16.4) -- (156,16.4);
+    \path[dot] (139.6,17) rectangle (141,17.8);
+    \path[dot] (156.6,17) rectangle (158,17.8);
+    \path[dot] (160.2,17) rectangle (161.6,17.8);
+    \path[hatch,from svg] svg{M138,17.8 H162 V26.4 Q162,27.6 160.8,27.6 H139.2 Q138,27.6 138,26.4 Z};
+    \path[fill=white] (142,17.7) rectangle (156,26);
+    \path[fill=white] (156,24.6) rectangle (159.8,26);
+    \path[fill=white] (158.4,17.7) rectangle (159.8,26);
+    \path[o,from svg] svg{M142,17.8 H138 V26.4 Q138,27.6 139.2,27.6 H160.8 Q162,27.6 162,26.4 V17.8 H159.8};
+    \path[o] (156,17.8) -- (158.4,17.8);
+    \path[o] (142,17.8) -- (142,26) -- (159.8,26) -- (159.8,17.8);
+    \path[o] (156,17.8) -- (156,24.6) -- (158.4,24.6) -- (158.4,17.8);
+    \path[hid] (142,23.6) -- (156,23.6);
+    \path[t] (142,18.6) -- (156,18.6);
+    \path[dot] (146.7,19.5) circle[radius=0.17];
+    \path[dot] (150.9,19.2) circle[radius=0.17];
+    \path[dot] (149.5,20.4) circle[radius=0.17];
+    \path[dot] (143.3,20.9) circle[radius=0.17];
+    \path[dot] (143.5,19.3) circle[radius=0.17];
+    \path[dot] (148,22.2) circle[radius=0.17];
+    \path[dot] (150.6,22.7) circle[radius=0.17];
+    \path[dot] (155.1,19.1) circle[radius=0.17];
+    \path[dot] (153.6,20.1) circle[radius=0.17];
+    \path[dot] (144.4,19.4) circle[radius=0.17];
+    \path[dot] (146.5,22.2) circle[radius=0.17];
+    \path[dot] (144.9,21.2) circle[radius=0.17];
+    \path[dot] (150.8,20.4) circle[radius=0.17];
+    \path[dot] (149.6,19.2) circle[radius=0.17];
+    \path[dot] (148.4,20.1) circle[radius=0.17];
+    \path[dot] (152.8,21.7) circle[radius=0.17];
+    \path[dot] (149.3,22.4) circle[radius=0.17];
+    \path[dot] (151.9,20.1) circle[radius=0.17];
+    \path[dot] (151.5,21.3) circle[radius=0.17];
+    \path[dot] (153.4,22.7) circle[radius=0.17];
+    \path[dot] (143.4,22) circle[radius=0.17];
+    \path[dot] (146.2,20.6) circle[radius=0.17];
+    \path[dot] (147.3,21.2) circle[radius=0.17];
+    \path[dot] (154.8,21.7) circle[radius=0.17];
+    \path[dot] (149.2,21.4) circle[radius=0.17];
+    \path[dot] (154.8,20.7) circle[radius=0.17];
+    \path[dot] (154.6,22.9) circle[radius=0.17];
+    \path[dot] (145.4,19.8) circle[radius=0.17];
+    \path[dot] (144.5,22.2) circle[radius=0.17];
+    \path[dot] (151.5,22.4) circle[radius=0.17];
+    \path[dot] (145.4,22.7) circle[radius=0.17];
+    \path[dot] (153.7,21.6) circle[radius=0.17];
+    \path[dot] (142.7,20) circle[radius=0.17];
+    \path[dot] (144.3,20.3) circle[radius=0.17];
+    \path[dot] (150.6,21.6) circle[radius=0.17];
+    \path[dot] (153.8,19) circle[radius=0.17];
+    \path[dot] (152.2,19) circle[radius=0.17];
+    \path[dot] (147.6,19) circle[radius=0.17];
+    \path[dot] (142.7,22.7) circle[radius=0.17];
+    \path[dot] (152.7,20.7) circle[radius=0.17];
+    \path[dot] (147.3,22.9) circle[radius=0.17];
+    \path[dot] (148.5,19) circle[radius=0.17];
+    \path[dot] (143.8,22.9) circle[radius=0.17];
+    \path[dot] (145.8,21.5) circle[radius=0.17];
+    \path[dot] (145.9,19) circle[radius=0.17];
+    \path[dot] (147.4,20.2) circle[radius=0.17];
+    \path[wa] (150,2.4) -- (150,13.8);
+    \path[wa] (152,25) -- (159.1,25) -- (159.1,2.6);
+    \node[lbl-s,r] at (148.4,3.6) {FROM THERMOBLOCK};
+    \node[lbl-s] at (160.8,3.6) {TO HX1};
+    \path[w] (162.8,8) -- (164,8) -- (164,16.8) -- (162.8,16.8);
+    \node[lbl-s] at (165.2,11.9) {10.0 BAR ABS};
+    \node[lbl-s] at (165.2,14.4) {93 °C};
+    \path[w] (162.8,23.6) -- (164,23.6) -- (164,27.6) -- (162.8,27.6);
+    \node[lbl-s] at (165.2,25.2) {101 KPA ABS};
+    \node[lbl-s] at (165.2,27.7) {88 °C};
+    \node[lbl-s] at (165.2,31.6) {CABIN};
+    \node[lbl-s] at (165.2,34.1) {56.5 KPA ABS};
+    \node[lbl,r] at (136.4,16) {SHOWER SCREEN};
+    \path[ld] (137,15.4) -- (143,16.3);
+    \node[lbl,r] at (136.4,19.4) {FACE SEAL (3)};
+    \path[ld] (137,18.7) -- (139.8,17.6);
+    \node[lbl,r] at (136.4,22.4) {PUCK, 18 G};
+    \path[ld] (137,21.6) -- (144,21.6);
+    \node[lbl,r] at (136.4,26) {SEALED SUMP};
+    \path[ld] (137,25.2) -- (143.6,25);
+    \node[lbl-b,c] at (150,32.6) {SECTION A–A};
+    \node[lbl-s,c] at (150,35.4) {LOOKING FWD, SCALE 1/4};
+  \end{scope}
+  \begin{scope}[shift={(150,62)}]
+    \path[wa] (0,0) -- (8.4,0);
+    \path[wa] (0,0) -- (0,-5.6);
+    \path[of] (0,0) circle[radius=0.9];
+    \path[dot] (0,0) circle[radius=0.28];
+    \node[lbl-s] at (9.2,0.8) {+X};
+    \node[lbl-s] at (-1.2,-6.4) {+Z};
+    \node[lbl-s] at (-4.8,2.8) {+Y};
+  \end{scope}
+\end{nhfigure}
+
+\vspace{2.2mm}
+\begin{nhpara}{2.12.2}{FUNCTIONAL DESCRIPTION.}
+With cb PEU HTR closed, the thermoblock heats to 93 °C and the HTR RDY talkback goes gray. GROUP LOCK clamps the portafilter to the group head. BREW starts pump P1, which draws potable water through extract cooler HX1 and drives it through the thermoblock and the puck at 10.0 bar absolute. The extract collects in the sealed sump, gives up its heat to the incoming water in HX1 and leaves through BPV-2 (figure 2.12-2).
+\end{nhpara}
+
+\begin{nhsubpara}[6.8mm]{2.12.2.1}{Back-Pressure Hold.}
+Valve BPV-2 holds the sump at 101 kPa (14.7 psia) and opens only while extract temperature T2 is at least 4 °C below the cabin boiling point: \nowrap{T2 ≤ T\textsubscript{sat}(56.5 kPa) − 4 °C = 80 °C (176 °F)}.
+\end{nhsubpara}
+
+\begin{nhfigure}[-3.6]{50}{2.12-2}{PEU Functional Diagram and Saturation Curve}{PEU-502A}
+  \path[box] (24,-2) rectangle (26,16);
+  \node[lbl-s,c,up] at (22.9,7) {120 VDC BUS 2};
+  \path[w] (26,3) -- (31.7,3);
+  \path[dot] (26,3) circle[radius=0.5];
+  \path[of] (31.7,3) circle[radius=0.6];
+  \path[of] (36.3,3) circle[radius=0.6];
+  \path[w,from svg] svg{M31.9,2.1 Q34,-0.1 36.1,2.1};
+  \path[w] (34,0.6) -- (34,-0.9);
+  \path[w] (32.9,-0.9) -- (35.1,-0.9);
+  \node[lbl-s,c] at (34,5.7) {CB1 15A};
+  \node[lbl-s,c] at (34,8.1) {PEU HTR};
+  \path[wa] (36.9,3) -- (73,3) -- (73,7.6);
+  \path[w] (26,12) -- (41,12);
+  \path[dot] (26,12) circle[radius=0.5];
+  \path[of] (41.6,12) circle[radius=0.6];
+  \path[of] (46.4,12) circle[radius=0.6];
+  \path[w] (40.8,9.8) -- (47.2,9.8);
+  \path[w] (44,9.8) -- (44,7.8);
+  \path[w] (42.8,7.8) -- (45.2,7.8);
+  \node[lbl-s,c] at (44,15.2) {S2 BREW};
+  \path[wa] (47,12) -- (63,12) -- (63,20);
+  \path[bp] (84,3.4) circle[radius=2];
+  \path[w] (84,5.4) -- (84,8);
+  \node[lbl-s] at (87.2,3) {HTR RDY TB};
+  \node[lbl-s] at (87.2,5.4) {GRAY = 93 °C, BP = HEATING};
+  \path[box] (2,18.6) rectangle (19,27.4);
+  \node[lbl,c] at (10.5,22.6) {POTABLE BUS};
+  \node[lbl-s,c] at (10.5,25.4) {GALLEY RACK 2};
+  \path[w] (19,23) -- (23.4,23);
+  \path[of,from svg] svg{M23.4,21.6 L23.4,24.4 L25.8,23 Z};
+  \path[w] (26,21.6) -- (26,24.4);
+  \node[lbl-s,c] at (24.7,20.6) {V1};
+  \path[wa] (26,23) -- (33.6,23);
+  \path[box] (34,19) rectangle (56,41);
+  \path[ld] (35,23) -- (55,23);
+  \path[ld] (55,37) -- (35,37);
+  \node[lbl-b,c] at (45,28.6) {HX1};
+  \node[lbl,c] at (45,31.4) {EXTRACT COOLER};
+  \node[lbl-s,c] at (45,34) {COUNTERFLOW};
+  \path[w] (56,23) -- (60.4,23);
+  \path[of] (63,23) circle[radius=2.6];
+  \path[dot,from svg] svg{M61.8,21.6 L64.8,23 L61.8,24.4 Z};
+  \node[lbl-s,c] at (63,28.2) {P1 PUMP};
+  \path[wa] (65.6,23) -- (74,23) -- (74,18.4);
+  \path[box] (68,8) rectangle (90,18);
+  \node[lbl,c] at (79,12.4) {THERMOBLOCK};
+  \node[lbl-s,c] at (79,15.4) {1.1 KW, 93 °C};
+  \path[wa] (90,13) -- (101.6,13);
+  \path[dot] (95.4,13) circle[radius=0.5];
+  \path[w] (95.4,13) -- (95.4,17.4);
+  \path[of] (95.4,19) circle[radius=1.6];
+  \path[w] (95.4,19) -- (96.4,17.9);
+  \node[lbl-s,c] at (95.1,23) {BREW PRESS};
+  \path[box] (102,8) rectangle (118,15.4);
+  \node[lbl,c] at (110,12.6) {GROUP HEAD};
+  \path[box] (102,15.4) rectangle (118,18.6);
+  \path[dot] (102.8,16.2) circle[radius=0.17];
+  \path[dot] (103.6,17.4) circle[radius=0.17];
+  \path[dot] (103.9,16.1) circle[radius=0.17];
+  \path[dot] (102.9,17.9) circle[radius=0.17];
+  \path[dot] (117.2,16.2) circle[radius=0.17];
+  \path[dot] (116.4,17.4) circle[radius=0.17];
+  \path[dot] (116.1,16.1) circle[radius=0.17];
+  \path[dot] (117.1,17.9) circle[radius=0.17];
+  \node[lbl-s,c] at (110,17.75) {PUCK, 18 G};
+  \path[box] (102,18.6) rectangle (118,26);
+  \node[lbl,c] at (110,22.2) {SEALED SUMP};
+  \node[lbl-s,c] at (110,24.9) {PORTAFILTER};
+  \path[w] (118.6,8) -- (120,8) -- (120,26) -- (118.6,26);
+  \node[lbl-s,c,up] at (122.1,17) {GROUP LOCK};
+  \path[wa] (110,26) -- (110,37) -- (56.4,37);
+  \path[w] (34,37) -- (23.2,37);
+  \path[dot] (27.8,37) circle[radius=0.5];
+  \path[w] (27.8,37) -- (27.8,33.9);
+  \path[of] (27.8,32.2) circle[radius=1.7];
+  \node[tag,c] at (27.8,32.85) {T2};
+  \path[ev] (26.1,32.2) -- (22.8,32.2);
+  \path[of,from svg] svg{M18.8,35.6 L18.8,38.4 L21,37 Z};
+  \path[of,from svg] svg{M23.2,35.6 L23.2,38.4 L21,37 Z};
+  \path[w] (21,37) -- (21,33.6);
+  \path[box] (19.2,31.2) rectangle (22.8,33.6);
+  \node[lbl-s,c] at (21,30) {BPV-2};
+  \path[wa] (18.8,37) -- (7.4,37) -- (7.4,39.8);
+  \path[o,from svg] svg{M3,40.6 L11.8,40.6 L11,44.6 Q10.8,45.4 10,45.4 L4.8,45.4 Q4,45.4 3.8,44.6 Z};
+  \node[lbl-s] at (13.4,44.6) {CUP};
+  \begin{scope}[shift={(21.4,23)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {1};
+  \end{scope}
+  \begin{scope}[shift={(58.2,23)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {2};
+  \end{scope}
+  \begin{scope}[shift={(93,13)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {3};
+  \end{scope}
+  \begin{scope}[shift={(110,30.4)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {4};
+  \end{scope}
+  \begin{scope}[shift={(31.2,37)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {5};
+  \end{scope}
+  \begin{scope}[shift={(14.6,37)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {6};
+  \end{scope}
+  \node[lbl-s] at (35,43.6) {STATION DATA:};
+  \node[lbl-s] at (35,46) {PRESSURE ABS, TEMP};
+  \begin{scope}[shift={(59.4,40.9)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {1};
+    \node[lbl-s] at (2,0.75) {2.4 BAR, 22 °C};
+  \end{scope}
+  \begin{scope}[shift={(80.4,40.9)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {2};
+    \node[lbl-s] at (2,0.75) {2.4 BAR, 31 °C};
+  \end{scope}
+  \begin{scope}[shift={(101.4,40.9)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {3};
+    \node[lbl-s] at (2,0.75) {10.0 BAR, 93 °C};
+  \end{scope}
+  \begin{scope}[shift={(59.4,44.2)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {4};
+    \node[lbl-s] at (2,0.75) {101 KPA, 88 °C};
+  \end{scope}
+  \begin{scope}[shift={(80.4,44.2)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {5};
+    \node[lbl-s] at (2,0.75) {101 KPA, 76 °C};
+  \end{scope}
+  \begin{scope}[shift={(101.4,44.2)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {6};
+    \node[lbl-s] at (2,0.75) {56.5 KPA, 76 °C};
+  \end{scope}
+  \path[t] (124.6,-3.6) -- (124.6,46.4);
+  \node[lbl-b] at (127.4,-0.8) {DETAIL A: SATURATION CURVE};
+  \path[w] (139,3) -- (139,33) -- (176,33);
+  \path[t] (139,33) -- (139,34.2);
+  \path[t] (144.29,33) -- (144.29,33.8);
+  \path[t] (149.57,33) -- (149.57,34.2);
+  \path[t] (154.86,33) -- (154.86,33.8);
+  \path[t] (160.14,33) -- (160.14,34.2);
+  \path[t] (165.43,33) -- (165.43,33.8);
+  \path[t] (170.71,33) -- (170.71,34.2);
+  \path[t] (176,33) -- (176,33.8);
+  \path[t] (139,33) -- (137.8,33);
+  \path[t] (139,28) -- (138.2,28);
+  \path[t] (139,23) -- (137.8,23);
+  \path[t] (139,18) -- (138.2,18);
+  \path[t] (139,13) -- (137.8,13);
+  \path[t] (139,8) -- (138.2,8);
+  \path[t] (139,3) -- (137.8,3);
+  \begin{scope}[every node/.append style={anchor=base}]
+    \node[lbl-s] at (139,36.4) {40};
+    \node[lbl-s] at (149.57,36.4) {60};
+    \node[lbl-s] at (160.14,36.4) {80};
+    \node[lbl-s] at (170.71,36.4) {100};
+  \end{scope}
+  \begin{scope}[every node/.append style={anchor=base east}]
+    \node[lbl-s] at (137.4,33.7) {70};
+    \node[lbl-s] at (137.4,23.7) {80};
+    \node[lbl-s] at (137.4,13.7) {90};
+    \node[lbl-s] at (137.4,3.7) {100};
+  \end{scope}
+  \node[lbl-s,c] at (157.5,39.4) {PRESSURE, KPA ABS};
+  \node[lbl-s,c,up] at (131.4,18) {TEMPERATURE, °C};
+  \path[w] (139,27.06) -- (140.32,25.6) -- (141.64,24.21) -- (142.96,22.88) -- (144.29,21.61) -- (145.61,20.39) -- (146.93,19.22) -- (148.25,18.09) -- (149.57,17.01) -- (150.89,15.96) -- (152.21,14.94) -- (153.54,13.96) -- (154.86,13.01) -- (156.18,12.09) -- (157.5,11.19) -- (158.82,10.32) -- (160.14,9.47) -- (161.46,8.64) -- (162.79,7.83) -- (164.11,7.05) -- (165.43,6.28) -- (166.75,5.53) -- (168.07,4.79) -- (169.39,4.07) -- (170.71,3.37) -- (171.41,3);
+  \path[ev] (139,10) -- (176,10);
+  \path[ev] (147.72,3) -- (147.72,33);
+  \path[ev] (171.41,3) -- (171.41,33);
+  \path[ev] (139,23) -- (171.41,23);
+  \node[lbl-s,c] at (147.72,2.2) {CABIN};
+  \node[lbl-s,c] at (171.41,2.2) {SUMP};
+  \node[lbl-s] at (157.6,15.4) {BREW 93 °C};
+  \path[ld] (162.6,13.4) -- (162.8,10.4);
+  \path[dot] (147.72,18.54) circle[radius=0.5];
+  \node[lbl-s,r] at (146.62,17.94) {84 °C};
+  \path[w] (146.82,9.1) -- (148.62,10.9);
+  \path[w] (146.82,10.9) -- (148.62,9.1);
+  \node[lbl-s] at (149.32,8.6) {FLASHES};
+  \node[lbl-s,c] at (156,22.2) {T2 LIMIT 80 °C};
+  \path[wa] (171.41,16.4) -- (171.41,25.4);
+  \path[wa] (170.01,27) -- (149.32,27);
+  \node[lbl-s,r] at (170.21,20.4) {HX1};
+  \node[lbl-s,c] at (159.57,26.2) {BPV-2};
+  \node[lbl-s] at (141,6.4) {VAPOR};
+  \node[lbl-s] at (162,31.4) {LIQUID};
+  \begin{scope}[shift={(171.41,15)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {4};
+  \end{scope}
+  \begin{scope}[shift={(171.41,27)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {5};
+  \end{scope}
+  \begin{scope}[shift={(147.72,27)}]
+    \path[of] (0,0) circle[radius=1.3];
+    \node[tag,c] at (0,0.65) {6};
+  \end{scope}
+\end{nhfigure}
+
+\begin{nhlower}
+  \begin{nhpara}{2.12.3}{PERFORMANCE AND DESIGN DATA.}\end{nhpara}
+  \begin{nhtable}{2.12-1}{PEU Performance Data}
+    \nhrow{Dose and yield, double shot}{18 g in, 36 g out}
+    \nhrow{Pressure across puck}{9.0 bar (130 psi)}
+    \nhrow{Brew water temperature}{93 °C (199 °F)}
+    \nhrow{Extraction time, nominal}{27 sec}
+    \nhrow{Extract temperature at spout}{76 °C (169 °F)}
+    \nhrow{Heater power, 120 Vdc bus}{1.1 kW}
+    \nhrow{Mass, PEU dry}{14.6 kg (32.2 lb)}
+    \nhrow{Crema persistence at 1/6 g}{12 min (1 g: 2 min)}
+  \end{nhtable}
+\nhrightcolumn
+  \nhnotice{WARNING}{Hold GROUP LOCK at VENT until BREW PRESS reads zero. Brew water flashes at cabin pressure and can throw the puck 6 m at 1/6 g.}
+  \begin{nhchecklist}{PULL SHOT}{CREW}
+    \nhstep{1}{cb PEU HTR - close}
+    \nhstep{2}{HTR RDY tb - bp, then gray}
+    \nhstep{3}{PORTAFILTER - 18 g, insert}
+    \nhstep{4}{GROUP LOCK - LOCK}
+    \nhstep{5}{BREW - press (27 sec)}
+    \nhverify{BREW PRESS - 9.0 bar}
+    \nhstep{6}{GROUP LOCK - VENT, then OPEN}
+  \end{nhchecklist}
+\end{nhlower}
+
+\end{document}
