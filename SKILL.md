@@ -97,8 +97,9 @@ when the skill loads):
    error it prints the error from the log.
 
 6. **Check and look.** Run
-   `uv run --no-project --with pymupdf python <skill>/scripts/check.py <out>/<name>.pdf --out <out>/tiles`.
-   It must report one page and black and white only. Then open the preview
+   `uv run --no-project --with pymupdf python <skill>/scripts/check.py <out>/<name>.pdf --out <out>/tiles`
+   (add `--pages N` for multi-page sections). It must report the expected
+   page count and black and white only. Then open the preview
    `<out>/<name>.png` and every tile it lists, and look for:
    - a line or leader crossing or touching text (keep 0.6 mm clear)
    - labels touching each other or a box edge
