@@ -26,7 +26,7 @@ documentation, and for vintage spec sheets.
 1. **Check the requirements** (next section). Each of these must succeed:
    ```sh
    xelatex --version
-   kpsewhich fontspec.sty tikz.sty tabularx.sty geometry.sty
+   kpsewhich fontspec.sty tikz.sty tabularx.sty geometry.sty xfp.sty
    uv --version
    ```
    If `xelatex` is missing, stop and tell the user to install TeX Live or

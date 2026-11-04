@@ -12,6 +12,7 @@
 \RequirePackage{tikz}
 \usetikzlibrary{arrows.meta,patterns.meta,svg.path}
 \RequirePackage{tabularx}
+\RequirePackage{xfp} % \fpeval for the fit check; built into the kernel only from 2022-06
 
 \ifnh@letter
   \def\nh@paperw{215.9}\def\nh@paperh{279.4}
