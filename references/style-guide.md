@@ -79,7 +79,10 @@ Fixed furniture:
 - **Footer**: the subsystem name centered, then the dated line. Basic Date is
   the first version (a repo's first commit; a plausible date for fiction).
   Change Date is the latest change. Leave Mission blank unless it means
-  something.
+  something. Software and IT subjects have systems and projects, not
+  missions: set `mission label` to `System` or `Project` and put the short
+  name in `mission`. The field is 20 mm wide, so keep the name to about
+  eight capitals.
 - **Doc number**: pattern after `SM2A-03-BLOCK II-(1)`: a 2–4 letter code plus
   a digit and A (`JN2A`, `IT2A`), then `-03-BLOCK I-(1)`.
 
