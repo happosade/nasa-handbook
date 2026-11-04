@@ -87,7 +87,8 @@ when the skill loads):
 
 4. **Fill the template.** Set the page metadata in `\nhsetup` (keys: `doc`,
    `title`, `part`, `section`, `subsection`, `subsystem`, `tab`, `tab top` in
-   mm, `mission`, `basic date`, `change date`; brace any value) and replace
+   mm, `mission`, `mission label` (default `Mission`; `System` or `Project`
+   for IT subjects), `basic date`, `change date`; brace any value) and replace
    every `[BRACKETED]` placeholder. A figure is
    `\begin{nhfigure}[top y]{height}{number}{caption}{code}`: the box spans
    y from `top y` (default 0) to `top y + height`. Draw the figures from `tikz-parts.md` parts in

@@ -73,10 +73,10 @@
   doc/.store in=\nh@doc, title/.store in=\nh@title, part/.store in=\nh@part,
   section/.store in=\nh@section, subsection/.store in=\nh@subsection,
   subsystem/.store in=\nh@subsystem, tab/.store in=\nh@tab, tab top/.store in=\nh@tabtop,
-  mission/.store in=\nh@mission, basic date/.store in=\nh@basicdate, change date/.store in=\nh@changedate,
-  issuer/.store in=\nh@issuer,
+  mission/.store in=\nh@mission, mission label/.store in=\nh@missionlabel,
+  basic date/.store in=\nh@basicdate, change date/.store in=\nh@changedate, issuer/.store in=\nh@issuer,
   doc=, title=, part=SYSTEMS DATA, section=2, subsection=2.1, subsystem=, tab=,
-  tab top=112, mission=, basic date=, change date=, issuer=}
+  tab top=112, mission=, mission label=Mission, basic date=, change date=, issuer=}
 \newcommand\nhsetup[1]{\pgfkeys{/nh,#1}}
 
 % ---------- running head, footer and thumb tab: drawn on every page ----------
@@ -92,7 +92,7 @@
   \fill (13.5,-\nh@paperh+20.6) rectangle (196.5,-\nh@paperh+20.6-0.53);
   \node[anchor=base,inner sep=0,font=\fontsize{8.2pt}{10pt}\selectfont\nhspace{10}] at (\nh@cx,-\nh@paperh+15.7) {\nh@subsystem};
   \node[anchor=base west,inner sep=0,font=\fontsize{8.2pt}{10pt}\selectfont] at (15.5,-\nh@paperh+9.4)
-    {\makebox[180mm]{Mission \nh@fill{20mm}{\nh@mission}\hfill Basic Date \nh@fill{30mm}{\nh@basicdate}\hfill
+    {\makebox[180mm]{\nh@missionlabel\ \nh@fill{20mm}{\nh@mission}\hfill Basic Date \nh@fill{30mm}{\nh@basicdate}\hfill
       Change Date \nh@fill{30mm}{\nh@changedate}\hfill Page \nh@fill{18mm}{\nh@pageno}}};
   \ifx\nh@tab\@empty\else
     \fill (\nh@paperw-8.5,-\nh@tabtop) rectangle (\nh@paperw,-\nh@tabtop-17);
