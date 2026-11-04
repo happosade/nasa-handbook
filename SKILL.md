@@ -1,6 +1,6 @@
 ---
 name: nasa-handbook
-description: Make printable technical documents in the style of Apollo-era NASA paperwork, typeset with XeLaTeX and drawn with TikZ. The model is an Apollo Operations Handbook "Systems Data" page with a typed running head, numbered paragraphs, Leroy-lettered line drawings and schematics, a performance data table, NOTE/CAUTION/WARNING notices, a Flight Data File checklist card, a black thumb tab and a dated footer, rendered to an A4 or US Letter PDF. Use this whenever someone asks for NASA-style, Apollo-style, retro aerospace or "mission manual" documentation. Also use it for a technical explainer, spec sheet or one-pager that should look like vintage engineering paperwork, for a handbook page explaining a product, codebase, system or fictional gadget, or for "another one of those NASA pages", even if they never say Apollo or handbook.
+description: Make printable technical documents in the style of Apollo-era NASA paperwork, typeset with XeLaTeX and drawn with TikZ. A one-page mode models an Apollo Operations Handbook "Systems Data" page (typed running head, numbered paragraphs, Leroy-lettered drawings and schematics, data table, NOTE/CAUTION/WARNING, checklist card, thumb tab, dated footer). A handbook mode makes long documents in the same look, with a cover, revision record, contents, UML-style diagrams, requirements, decision records (ADRs) and appendices, structured after the NASA Systems Engineering Handbook. Use this whenever someone asks for NASA-style, Apollo-style, retro aerospace or "mission manual" documentation. Also use it for a technical explainer, spec sheet, one-pager, system description or design handbook that should look like vintage engineering paperwork, or for "another one of those NASA pages", even if they never say Apollo or handbook.
 compatibility: opencode
 metadata:
   opencode/slash: "true"
@@ -9,7 +9,8 @@ metadata:
 # NASA handbook page
 
 This skill makes one-page (or few-page) technical documents that read like a
-1969 Apollo Operations Handbook page. A typed running head sits over numbered
+1969 Apollo Operations Handbook page. Handbook mode (below) makes documents
+of any length in the same style. A typed running head sits over numbered
 paragraphs, followed by a hero line drawing, a second figure, a data table, a
 caution and a crew checklist. The thumb tab and the dated footer finish the
 page. It suits real subjects (a codebase, a product, a protocol) and fictional
@@ -39,6 +40,9 @@ when the skill loads):
   paragraphs, the figure, table, notice and checklist environments, the TikZ
   drawing styles and the fit check.
 - `assets/template.tex`: a skeleton of every block. Start every page from it.
+- `assets/handbook-template.tex`: the skeleton for handbook mode. It has a
+  cover, revision record, contents, preface, sections with UML-style figures,
+  a requirements table, a decision record, procedures and appendices.
 - `assets/fonts/`: Routed Gothic (Leroy lettering), Letter Gothic and their
   licences. Copy the folder next to the page.
 - `scripts/render.sh`: compiles the page with XeLaTeX, prints the room left
@@ -47,12 +51,14 @@ when the skill loads):
   only, and the fonts. It writes the PNG preview next to the PDF and cuts
   300 dpi half-width tiles for the visual review (`--out DIR` to choose where).
 - `references/style-guide.md`: anatomy, space budget, typography, writing
-  voice, which figures to draw, drawing taste, pitfalls and variants. Read it
+  voice, which figures to draw, drawing taste, pitfalls, variants, and
+  handbook mode (§10). Read it
   in full for your first page in a session.
 - `references/tikz-parts.md`: copy-paste drawing parts (boxes, drums, wires,
   breakers, switches, talkbacks, callouts, dimensions, section views,
   timelines, sequence and parts strips, valves, pumps, gauges, sensors,
-  station tags, charts).
+  station tags, charts, and UML-style component, sequence, state and process
+  flow diagrams).
 - `references/sources.md`: the scanned originals and what each taught.
 
 ## Workflow
@@ -116,6 +122,33 @@ when the skill loads):
    subjects, list the files you checked the numbers against. Mention anything
    deliberately simplified.
 
+## Handbook mode
+
+Use handbook mode when the subject needs more than a page or two: a system
+description, a design document, a best-practices handbook. The look is the
+same. Only the length and the structure change. Read style guide §10 first.
+
+1. **Outline the document before drawing.** Start with 1. INTRODUCTION and
+   2. DOCUMENTS. Then give one section to each part of the subject (for
+   example system overview, design solution, operations). Put abbreviations
+   and the glossary in appendices. Under each section, list the numbered
+   paragraphs and the figure each paragraph introduces.
+2. **Set up** as in step 3 below, but copy `handbook-template.tex`.
+3. **Write to KSC-DF-107.** Use *shall* only for verifiable requirements. Give
+   every requirement a rationale and a verification method. Introduce each
+   figure and table in the text before it appears. Order notices as warning,
+   caution, note.
+4. **Draw complex systems UML-style**, with parts from `tikz-parts.md`: a
+   component diagram for structure, a sequence diagram for the key exchange, a
+   state machine for modes and a process flow for procedures.
+5. **Record the non-obvious choices** as `nhdecision` records (ADR form:
+   status, context, options with a trade matrix, decision, rationale,
+   consequences). For real subjects, the reasons must come from the repo's
+   history or docs. Don't invent them.
+6. **Render and check**: `render.sh` runs XeLaTeX twice so the contents fill
+   in, and prints `fit: handbook, N pages`. Run `check.py … --pages 0`, then
+   look at every page and its tiles as in step 6 below.
+
 ## What makes it look right
 
 These are the calls that separate a convincing page from a costume.
@@ -145,7 +178,8 @@ These are the calls that separate a convincing page from a costume.
 
 US Letter (`\documentclass[letter]{nasa-handbook}`), multi-page sections,
 controls-and-displays pages, engineering drawing sheets, Technical Note covers
-and the 1975 Helvetica look are all covered in style guide §9. The page
+and the 1975 Helvetica look are all covered in style guide §9; handbook mode
+is §10. The page
 structure, the drawing rules and the check loop stay the same.
 
 ## Requirements

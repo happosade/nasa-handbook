@@ -37,6 +37,7 @@ Conventions:
 - Time and data: timeline axis and ticks, lanes and bars, events, markers, legend, sequence detail, parts strip
 - Fluid and instruments: check valve, valve with actuator, pump, heat exchanger, gauge, sensor, station tags and station data, granular fill
 - Charts: axes, ticks, axis titles, a computed curve, reference lines, marked points, process path
+- UML-style: component, provided and required interface, dependency, realization, node, sequence lifelines with activations and an OPT frame, state machine, process flow (inputs, activities, outputs)
 
 ## Structure
 
@@ -469,5 +470,100 @@ data to millimetres in the expression. Reference levels and limits are dashed
 \path[w] (148.27,9.1) -- (150.07,10.9);
 \path[w] (148.27,10.9) -- (150.07,9.1);  % an X: a state to avoid (93 °C at 56.5 kPa)
 \path[wa] (171.41,16.4) -- (171.41,25.4);  % process path between stations
+```
+
+## UML-style diagrams
+
+For complex software or systems, borrow UML's notation but draw it with the
+same pens: boxes, Leroy caps, flat arrows. Stereotypes are in guillemets
+(`«COMPONENT»`); the class sends `«` and `»` to the fallback face, because
+Routed Gothic has no guillemets. `assets/handbook-template.tex` uses every
+part below in context. The class adds four styles: `dep` (dashed, open barb:
+dependency or reply), `gen` (open triangle: realization or generalization),
+`state` (rounded box) and `act` (activation bar).
+
+Component with its stereotype and the small component glyph at the top right:
+
+```latex
+\path[box] (8,14) rectangle (44,28);
+\node[lbl-s,c] at (24,18.4) {«COMPONENT»};
+\node[lbl,c] at (24,22.6) {CLIENT};
+\path[draw,fill=white,line width=0.2mm] (39,15.6) rectangle (42.4,20);
+\path[draw,fill=white,line width=0.2mm] (38.2,16.4) rectangle (39.8,17.2) (38.2,18.4) rectangle (39.8,19.2);
+```
+
+Provided interface (lollipop) meeting a required interface (socket). The
+socket arc opens toward the component that needs the interface:
+
+```latex
+\path[t,line width=0.3mm] (44,21) -- (57.4,21);
+\path[draw,fill=white,line width=0.3mm] (59,21) circle[radius=1.6];
+\node[lbl-s,c] at (59,16.6) {API};
+\path[draw,line width=0.3mm] (59,21) ++(60:2.6) arc[start angle=60,end angle=-60,radius=2.6];
+\path[t,line width=0.3mm] (61.6,21) -- (100,21);
+```
+
+Dependency and realization (label beside the line, never on it):
+
+```latex
+\path[dep] (26,38) -- (26,28.4);
+\node[lbl-s] at (27.6,34.4) {«USE»};
+\path[gen] (118,28) -- (118,39.6);
+\node[lbl-s] at (119.6,34.4) {REALIZES};
+```
+
+Node (a device, server or runtime) is a dashed `panel` titled `«NODE» NAME`.
+
+Sequence: object heads as boxes with `:NAME`, dashed lifelines, activation
+bars, solid calls and dashed replies, numbered messages. An `OPT`, `ALT` or
+`LOOP` frame is a thin rectangle with a notched tag at the top left and the
+guard in brackets beside it:
+
+```latex
+\foreach \x/\n in {20/{:CLIENT},70/{:SERVICE}} {
+  \path[box] (\x-14,2) rectangle (\x+14,9);
+  \node[lbl,c] at (\x,6.6) {\n};
+  \path[hid] (\x,9) -- (\x,48);
+}
+\path[act] (68.8,15) rectangle (71.2,44);
+\path[wa] (20,16) -- (68.4,16);
+\node[lbl-s,c] at (44,14.8) {1: GET(ID)};
+\path[dep] (68.8,43.4) -- (20.4,43.4);
+\node[lbl-s,c] at (44,42.2) {RECORD};
+\path[draw,line width=0.2mm] (56,32) rectangle (176,40);
+\path[draw,fill=white,line width=0.2mm] (56,32) -- (66,32) -- (66,34.2) -- (64.4,35.6) -- (56,35.6) -- cycle;
+\node[lbl-s] at (57.4,34.6) {OPT};
+\node[lbl-s] at (73,35.2) {[IF SUBSCRIBED]};
+```
+
+State machine: filled initial dot, rounded states, a bull's-eye final state,
+transitions labelled `EVENT [GUARD] / ACTION`. A state with an activity gets a
+divider and a `DO / …` line; keep the divider clear of incoming arrows:
+
+```latex
+\path[dot] (8,22) circle[radius=1.1];
+\path[wa] (9.1,22) -- (15.6,22);
+\path[state] (116,14) rectangle (146,30);
+\node[lbl,c] at (131,19.6) {ACTIVE};
+\path[t] (116,23.4) -- (146,23.4);
+\node[lbl-s,c] at (131,27.4) {DO / SAMPLE};
+\path[draw,line width=0.3mm] (168,22) circle[radius=1.6];
+\path[dot] (168,22) circle[radius=0.9];
+```
+
+Process flow (the Systems Engineering Handbook's process figure): inputs on
+the left, right-aligned and arrowed in; an activities box in the middle; outputs
+on the right, arrowed out:
+
+```latex
+\node[lbl-s,r] at (50,12) {DECISION NEEDED};
+\node[lbl-s,r] at (50,14.8) {FROM ALL PROCESSES};
+\path[wa] (51.2,13.4) -- (55.6,13.4);
+\path[box] (56,2) rectangle (124,44);
+\node[lbl-b,c] at (90,7) {ACTIVITIES};
+\path[t] (56,9.4) -- (124,9.4);
+\node[lbl-s] at (60,14.4) {ESTABLISH DECISION CRITERIA};
+\path[wa] (124,13.4) -- (132.6,13.4);
+\node[lbl-s] at (134,12) {RECOMMENDED};
 ```
 

@@ -1,0 +1,256 @@
+\documentclass[handbook]{nasa-handbook} % [handbook,letter] for US Letter
+
+\nhsetup{
+  doc         = {[XX2A]-04-[PROGRAM]-(1)},
+  title       = {[SUBJECT] HANDBOOK},
+  part        = {[SYSTEMS ENGINEERING]},
+  issuer      = {[NATIONAL AERONAUTICS AND SPACE ADMINISTRATION]},
+  basic date  = {[1 January 1970]},
+  change date = {},
+  mission     = {},
+}
+
+\begin{document}
+
+\nhcover
+
+\begin{nhhistory}
+  \nhhist{Basic}{}{[Basic issue.]}{[1 January 1970]}
+  \nhhist{}{}{}{}
+  \nhhist{}{}{}{}
+\end{nhhistory}
+
+\nhcontents
+
+\nhchapter*{PREFACE}
+[Why this handbook exists, who it is for, and what it does not cover. Plain paragraphs, no numbers. Keep it under a page.]
+
+[A second paragraph: how the handbook is maintained and where comments go.]
+
+% ---------- one \nhchapter per section; [TAB] is the thumb tab text ----------
+\nhchapter[INT]{INTRODUCTION}
+
+\begin{nhpara}{1.1}{PURPOSE.}
+[What the subject is and the one idea the reader must leave with.]
+\end{nhpara}
+
+\begin{nhpara}{1.2}{SCOPE AND APPLICATION.}
+[What the handbook covers, who applies it, and where it stops. Abbreviations are listed in Appendix A.]
+\end{nhpara}
+
+\nhnotice{NOTE}{[Background the reader needs before the procedures. A notice follows the paragraph it belongs to.]}
+
+\nhchapter[DOC]{DOCUMENTS}
+
+\begin{nhpara}{2.1}{APPLICABLE DOCUMENTS.}
+[The following documents form a part of this handbook to the extent specified herein.]
+
+[DOC-ID]\hspace{6mm}[Document Title]
+\end{nhpara}
+
+\begin{nhpara}{2.2}{REFERENCE DOCUMENTS.}
+[The following documents contain supplemental information.]
+
+[DOC-ID]\hspace{6mm}[Document Title]
+\end{nhpara}
+
+% ---------- UML-style figures for complex systems ----------
+\nhchapter[SYS]{SYSTEM OVERVIEW}
+
+\begin{nhpara}{3.1}{ARCHITECTURE.}
+[Which parts make up the system and where each one runs (figure 3-1).]
+\end{nhpara}
+
+\begin{nhfigure}{56}{3-1}{[System] Component Diagram}{SYS-501A}
+  \path[panel] (1.5,2.5) rectangle (72,53.5);
+  \node[lbl-s] at (3.4,5.6) {«NODE» [DEVICE]};
+  \path[box] (8,14) rectangle (44,28);
+  \node[lbl-s,c] at (24,18.4) {«COMPONENT»};
+  \node[lbl,c] at (24,22.6) {[CLIENT]};
+  \path[draw,fill=white,line width=0.2mm] (39,15.6) rectangle (42.4,20);
+  \path[draw,fill=white,line width=0.2mm] (38.2,16.4) rectangle (39.8,17.2) (38.2,18.4) rectangle (39.8,19.2);
+  \path[box] (8,38) rectangle (44,50);
+  \node[lbl-s,c] at (24,42.4) {«COMPONENT»};
+  \node[lbl,c] at (24,46.6) {[DRIVER]};
+  \path[dep] (26,38) -- (26,28.4);
+  \node[lbl-s] at (27.6,34.4) {«USE»};
+  \path[t,line width=0.3mm] (44,21) -- (57.4,21);
+  \path[draw,fill=white,line width=0.3mm] (59,21) circle[radius=1.6];
+  \node[lbl-s,c] at (59,16.6) {[API]};
+  \path[panel] (84,2.5) rectangle (178.5,53.5);
+  \node[lbl-s] at (85.9,5.6) {«NODE» [SERVER]};
+  \path[draw,line width=0.3mm] (59,21) ++(60:2.6) arc[start angle=60,end angle=-60,radius=2.6];
+  \path[t,line width=0.3mm] (61.6,21) -- (100,21);
+  \path[box] (100,14) rectangle (136,28);
+  \node[lbl-s,c] at (118,18.4) {«COMPONENT»};
+  \node[lbl,c] at (118,22.6) {[SERVICE]};
+  \path[dep] (136,21) -- (152.6,21);
+  \node[lbl-s,c] at (144.3,19.4) {«READ»};
+  \path[box,from svg] svg{M153,15 L153,27 A8.5,1.8 0 0 0 170,27 L170,15};
+  \path[box] (161.5,15) ellipse[x radius=8.5,y radius=1.8];
+  \node[lbl-b,c] at (161.5,22.2) {[STORE]};
+  \path[box] (100,40) rectangle (136,52);
+  \node[lbl-s,c] at (118,44.4) {«INTERFACE»};
+  \node[lbl,c] at (118,48.6) {[CONTRACT]};
+  \path[gen] (118,28) -- (118,39.6);
+  \node[lbl-s] at (119.6,34.4) {REALIZES};
+\end{nhfigure}
+
+\begin{nhpara}{3.2}{INTERACTIONS.}
+[The main exchange in the order it happens, naming messages as they appear on the wire (figure 3-2).]
+\end{nhpara}
+
+\begin{nhfigure}{50}{3-2}{[Request] Sequence Diagram}{SYS-502A}
+  \foreach \x/\n in {20/{:[CLIENT]},70/{:[SERVICE]},120/{:[STORE]},165/{:[SUBSCRIBER]}} {
+    \path[box] (\x-14,2) rectangle (\x+14,9);
+    \node[lbl,c] at (\x,6.6) {\n};
+    \path[hid] (\x,9) -- (\x,48);
+  }
+  \path[act] (68.8,15) rectangle (71.2,44);
+  \path[act] (118.8,21) rectangle (121.2,29);
+  \path[wa] (20,16) -- (68.4,16);
+  \node[lbl-s,c] at (44,14.8) {1: [REQUEST](ID)};
+  \path[wa] (71.2,22) -- (118.4,22);
+  \node[lbl-s,c] at (95,20.8) {2: [QUERY]};
+  \path[dep] (118.8,28.4) -- (71.6,28.4);
+  \node[lbl-s,c] at (95,27.2) {[ROWS]};
+  \path[draw,line width=0.2mm] (56,32) rectangle (176,40);
+  \path[draw,fill=white,line width=0.2mm] (56,32) -- (66,32) -- (66,34.2) -- (64.4,35.6) -- (56,35.6) -- cycle;
+  \node[lbl-s] at (57.4,34.6) {OPT};
+  \node[lbl-s] at (73,35.2) {[IF SUBSCRIBED]};
+  \path[wa] (71.2,38) -- (164.6,38);
+  \node[lbl-s,c] at (140,36.8) {3: [NOTIFY]};
+  \path[dep] (68.8,43.4) -- (20.4,43.4);
+  \node[lbl-s,c] at (44,42.2) {[RESPONSE]};
+\end{nhfigure}
+
+\begin{nhbox}{[SYSTEM] DESIGN KEYS}
+[Three to five one-line principles the reader should carry into every later section.]
+\end{nhbox}
+
+% ---------- requirements and decision records ----------
+\nhchapter[DES]{DESIGN SOLUTION}
+
+\begin{nhpara}{4.1}{REQUIREMENTS.}
+[Each requirement is a verifiable "shall" statement with its rationale and verification method (table 4-1). Use "should" for a recommendation, "will" for a certain event and "must" for a dependency.]
+\end{nhpara}
+
+\begin{nhgrid}{4-1}{[System] Requirements}{|l|X|X|c|}{ID&\multicolumn{1}{c|}{Requirement}&\multicolumn{1}{c|}{Rationale}&Verif.}
+  R-1&The [system] shall [verifiable behavior with a number and unit].&[Why the requirement exists.]&T\\\hline
+  R-2&The [system] shall [verifiable behavior with a number and unit].&[Why the requirement exists.]&A\\\hline
+\end{nhgrid}
+
+\begin{nhpara}{4.2}{DECISION ANALYSIS.}
+[How choices between alternatives are made and recorded (figure 4-1). Each significant choice gets a decision record (decision D-1).]
+\end{nhpara}
+
+\begin{nhfigure}{46}{4-1}{Decision Analysis Process}{DES-501A}
+  \node[lbl-s] at (2,4) {INPUTS};
+  \node[lbl-s,r] at (50,12) {DECISION NEEDED};
+  \node[lbl-s,r] at (50,14.8) {FROM ALL PROCESSES};
+  \path[wa] (51.2,13.4) -- (55.6,13.4);
+  \node[lbl-s,r] at (50,24) {ALTERNATIVES, ISSUES};
+  \node[lbl-s,r] at (50,26.8) {AND SUPPORTING DATA};
+  \path[wa] (51.2,25.4) -- (55.6,25.4);
+  \node[lbl-s,r] at (50,36) {ANALYSIS SUPPORT};
+  \node[lbl-s,r] at (50,38.8) {REQUESTS};
+  \path[wa] (51.2,37.4) -- (55.6,37.4);
+  \path[box] (56,2) rectangle (124,44);
+  \node[lbl-b,c] at (90,7) {ACTIVITIES};
+  \path[t] (56,9.4) -- (124,9.4);
+  \foreach \y/\a in {14.4/ESTABLISH DECISION CRITERIA,19.6/IDENTIFY ALTERNATIVES,24.8/SELECT EVALUATION METHODS,30/EVALUATE ALTERNATIVES,35.2/SELECT RECOMMENDED SOLUTION,40.4/CAPTURE THE DECISION RECORD}
+    \node[lbl-s] at (60,\y) {\a};
+  \node[lbl-s,r] at (178,4) {OUTPUTS};
+  \path[wa] (124,13.4) -- (132.6,13.4);
+  \node[lbl-s] at (134,12) {RECOMMENDED};
+  \node[lbl-s] at (134,14.8) {ALTERNATIVE};
+  \path[wa] (124,25.4) -- (132.6,25.4);
+  \node[lbl-s] at (134,24) {DECISION RECORD};
+  \node[lbl-s] at (134,26.8) {AND RATIONALE};
+  \path[wa] (124,37.4) -- (132.6,37.4);
+  \node[lbl-s] at (134,36) {IMPACTS};
+  \node[lbl-s] at (134,38.8) {AND RISKS};
+\end{nhfigure}
+
+\begin{nhdecision}{D-1}{[DECISION TITLE]}{[Accepted], [1 January 1970]}
+  \nhfield{CONTEXT}{[The requirement, constraint or failure that forced a choice (requirement R-1).]}
+  \nhfield{OPTIONS}{[Two to four alternatives, scored against weighted criteria in table 4-2.]}
+  \begin{nhgrid}{4-2}{[Decision] Trade Matrix}{|X|c|c|c|}{\multicolumn{1}{|c|}{Criterion (Weight)}&[Option A]&[Option B]&[Option C]}
+    [Criterion] (0.5)&3&2&1\\\hline
+    [Criterion] (0.3)&2&3&2\\\hline
+    [Criterion] (0.2)&2&1&3\\\hline
+    Weighted score&2.5&2.3&1.7\\\hline
+  \end{nhgrid}
+  \nhfield{DECISION}{[One sentence naming the chosen option.]}
+  \nhfield{RATIONALE}{[Why it beat the others, in terms of the criteria.]}
+  \nhfield{CONSEQUENCES}{[What becomes easier, what becomes harder, and what would reopen the decision.]}
+\end{nhdecision}
+
+\nhchapter[OPS]{OPERATIONS}
+
+\begin{nhpara}{5.1}{STATES.}
+[Each state, what holds the system there and what moves it on (figure 5-1).]
+\end{nhpara}
+
+\begin{nhfigure}[9]{37}{5-1}{[System] State Diagram}{OPS-501A}
+  \path[dot] (8,22) circle[radius=1.1];
+  \path[wa] (9.1,22) -- (15.6,22);
+  \path[state] (16,16) rectangle (40,28);
+  \node[lbl,c] at (28,23) {[IDLE]};
+  \path[wa] (40,19.6) -- (65.6,19.6);
+  \node[lbl-s,c] at (53,18.4) {[ARM] [OK]};
+  \path[wa] (66,24.6) -- (40.4,24.6);
+  \node[lbl-s,c] at (53,28.4) {[DISARM]};
+  \path[state] (66,16) rectangle (90,28);
+  \node[lbl,c] at (78,23) {[ARMED]};
+  \path[wa] (90,22) -- (115.6,22);
+  \node[lbl-s,c] at (103,20.8) {[FIRE] / [LOG]};
+  \path[state] (116,14) rectangle (146,30);
+  \node[lbl,c] at (131,19.6) {[ACTIVE]};
+  \path[t] (116,23.4) -- (146,23.4);
+  \node[lbl-s,c] at (131,27.4) {DO / [ACTIVITY]};
+  \path[wa] (146,22) -- (166.2,22);
+  \node[lbl-s,c] at (156.2,20.8) {[SAFE]};
+  \path[draw,line width=0.3mm] (168,22) circle[radius=1.6];
+  \path[dot] (168,22) circle[radius=0.9];
+  \path[wa] (131,30) -- (131,38) -- (28,38) -- (28,28.4);
+  \node[lbl-s,c] at (79.5,41.8) {[TIMEOUT] / [RESET]};
+\end{nhfigure}
+
+\begin{nhpara}{5.2}{PROCEDURES.}
+[What the operator does and the limits that apply (table 5-1).]
+\end{nhpara}
+
+\begin{nhtable}{5-1}{[Operating Limits]}
+  \nhrow{[Parameter]}{[value with units]}
+  \nhrow{[Parameter]}{[value with units]}
+  \nhrow{[Parameter]}{[value with units]}
+\end{nhtable}
+
+\nhnotice{WARNING}{[The one way to injure someone. A warning comes before a caution, and a caution before a note.]}
+
+\nhnotice{CAUTION}{[The one way to damage equipment or lose data.]}
+
+\begin{nhchecklist}{[PROCEDURE NAME]}{[WHO]}
+  \nhstep{1}{[CONTROL] - [action]}
+  \nhstep{2}{[CONTROL] - [action]}
+  \nhverify{[STATE] - [expected]}
+\end{nhchecklist}
+
+% ---------- appendices: lettered A, B, ... ----------
+\nhappendix
+\nhchapter[A]{ABBREVIATIONS AND ACRONYMS}
+
+\begin{nhgrid}{A-1}{Abbreviations and Acronyms}{|l|X|}{\multicolumn{1}{|c|}{Term}&\multicolumn{1}{c|}{Meaning}}
+  [ABC]&[Expansion]\\\hline
+  [DEF]&[Expansion]\\\hline
+\end{nhgrid}
+
+\nhchapter[B]{GLOSSARY}
+
+\begin{nhgrid}{B-1}{Glossary}{|l|X|}{\multicolumn{1}{|c|}{Term}&\multicolumn{1}{c|}{Definition}}
+  [Term]&[One-sentence definition.]\\\hline
+  [Term]&[One-sentence definition.]\\\hline
+\end{nhgrid}
+
+\end{document}

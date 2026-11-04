@@ -16,6 +16,7 @@ file.
 7. Black and white only
 8. Pitfalls already paid for
 9. Variants and other NASA genres
+10. Handbook mode: long documents
 
 ## 1. The genre
 
@@ -183,6 +184,7 @@ separated by a thin vertical rule. Choose by what the subject is:
 | Process over time | Timeline in flight-plan style: lanes, clock axis, events as dashed verticals | Sequence detail, state table |
 | Protocol | Sequence diagram as a detail | Message or packet layout strip |
 | Control or electrical system | Schematic: breakers, switches, bus bars, talkbacks, hex terminals | Panel layout |
+| Complex software system | UML-style component diagram: nodes as dashed panels, «COMPONENT» boxes, interfaces, dependencies | Sequence diagram with activations, state machine, process flow |
 
 Mapping software onto period symbols works well and reads instantly:
 - Storage (databases, buckets, disks): drums, a cylinder with an elliptical top.
@@ -330,3 +332,89 @@ white.
   headings, flush left and ragged right, outline boxes around technical
   diagrams, one or two spot colours (NASA red). Only when the user asks for
   that look; never draw the worm.
+
+## 10. Handbook mode: long documents
+
+`\documentclass[handbook]{nasa-handbook}` (add `letter` for US Letter) makes a
+document of any length in the same visual language: the same running head,
+paragraph numbers, Leroy drawings, notices, thumb tabs and dated footer. Start
+from `assets/handbook-template.tex`. The page budget in §2 doesn't apply. The
+text flows, and a figure or table moves to the next page if it doesn't fit.
+
+**Structure.** The outline follows the NASA Systems Engineering Handbook
+(NASA/SP-2016-6105 Rev 2). The front-matter and writing rules follow the KSC
+Technical Documentation Style Guide (KSC-DF-107):
+
+1. Cover (`\nhcover`): doc number, title, part, issuer and date, with no head
+   and no footer. No insignia.
+2. Record of Revisions/Changes (`nhhistory`, rows `\nhhist{rev}{chg}{description}{date}`).
+   The first issue is revision "Basic". Later ones are lettered A, B, … with
+   numbered changes in between.
+3. Contents (`\nhcontents`): Table of Contents, then Lists of Figures, Tables
+   and Boxes. These fill in automatically; `render.sh` runs XeLaTeX twice.
+4. Preface (`\nhchapter*{PREFACE}`): unnumbered, roman page numbers.
+5. Numbered sections (`\nhchapter[TAB]{TITLE}`). Open with 1. INTRODUCTION
+   (Purpose; Scope and Application) and 2. DOCUMENTS (Applicable Documents;
+   Reference Documents). After that, follow the subject: system overview,
+   design solution (requirements and decisions), operations.
+6. Appendices (`\nhappendix`, then `\nhchapter`): lettered A, B, …, each on a
+   new page. Abbreviations and Acronyms come first, then the Glossary, then any
+   supporting data.
+
+Pages are numbered within their section (`3-7`, `A-2`). Number figures and
+tables the same way (`3-1`, `A-1`) and paragraphs as `3.1`, `3.2`.
+
+**Writing rules (KSC-DF-107).**
+- *shall* states a requirement that can be verified, *should* a
+  recommendation, *will* an event that is certain, and *must* a dependency
+  ("the computer must be restarted for the change to apply").
+- Use active voice when both the actor and the action matter. Use the
+  imperative mood for procedures ("Remove the test set from its case").
+- Introduce every figure and table in the text before it appears ("(figure
+  3-1)"), and refer to every appendix from the body ("see Appendix A").
+  Number appendices in the order the body introduces them.
+- Never leave a subsection alone: no 3.1 without a 3.2. Paragraph titles are
+  short noun phrases.
+- Spell an abbreviation out at first use and list it in Appendix A.
+- WARNING (someone can be hurt), CAUTION (equipment or data can be damaged),
+  NOTE (prevents misreading or rework). Put each one right after the
+  paragraph it qualifies. When more than one applies, the order is warning,
+  caution, note.
+
+**Requirements.** Put them in an `nhgrid` table with ID, Requirement,
+Rationale and Verification method (T test, A analysis, I inspection, D
+demonstration). One "shall" per row, with a number and a unit. Give every
+requirement a rationale; the SEH treats rationale as part of the requirement.
+
+**Decision records.** When a system uses one technology, structure or vendor
+over another and the reason isn't obvious, write an `nhdecision` record. This
+is the SEH's Decision Analysis process in ADR form:
+- STATUS: Proposed, Accepted, or Superseded by D-n, with the date.
+- CONTEXT: the requirement, constraint or failure that forced the choice.
+  Cite the requirement IDs.
+- OPTIONS: two to four real alternatives. Score them in a trade matrix
+  (`nhgrid` inside the record) with weighted criteria, and show the
+  weighted score.
+- DECISION: one sentence naming the choice.
+- RATIONALE: why it won, in terms of the criteria.
+- CONSEQUENCES: what becomes easier, what becomes harder, and what would
+  reopen the decision.
+Number the records D-1, D-2, …. They appear in the List of Boxes. Write one
+record per decision, and only for choices a newcomer would question. For real
+subjects, take the options and reasons from the code history, issues or design
+docs. Don't invent a rationale; if none is recorded, say so.
+
+**Boxes.** `nhbox{TITLE}` is the SEH sidebar: a ruled frame for "keys",
+definitions or side discussions, kept to a third of a page. It doesn't break
+across pages.
+
+**Figures.** Use the figure table in §5 for each section. For complex
+software, use the UML-style parts in `tikz-parts.md`:
+- a component diagram for structure
+- a sequence diagram for one important exchange
+- a state machine for anything with modes
+- a process flow (inputs, activities, outputs) for procedures and decisions
+
+The figure-code convention, the drawing rules (§6) and the check loop are the
+same as for one-pagers. Look at every page and every tile, not only the first.
+
