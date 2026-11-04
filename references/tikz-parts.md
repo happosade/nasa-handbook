@@ -461,7 +461,7 @@ data to millimetres in the expression. Reference levels and limits are dashed
 \node[lbl-s,c] at (157.5,39.4) {PRESSURE, KPA ABS};
 \node[lbl-s,c,up] at (131.4,18) {TEMPERATURE, °C};
 % x: 40..110 kPa over 139..176; y: 70..100 °C over 33..3. Water boiling point (Antoine).
-\path[w] plot[domain=44:94, samples=26, variable=\p]
+\path[w] plot[domain=44:101.3, samples=26, variable=\p]
   ({139+(\p-40)*37/70}, {33-(1730.63/(8.07131-log10(\p*7.50062))-233.426-70)});
 \path[ev] (139,23) -- (171.41,23);
 \node[lbl-s,c] at (156,22.2) {T2 LIMIT 80 °C};
