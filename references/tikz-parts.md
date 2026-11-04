@@ -460,14 +460,14 @@ data to millimetres in the expression. Reference levels and limits are dashed
 \end{scope}
 \node[lbl-s,c] at (157.5,39.4) {PRESSURE, KPA ABS};
 \node[lbl-s,c,up] at (131.4,18) {TEMPERATURE, °C};
-% x: 40..100 kPa over 139..176; y: 70..100 °C over 33..3. Water boiling point (Antoine).
+% x: 40..110 kPa over 139..176; y: 70..100 °C over 33..3. Water boiling point (Antoine).
 \path[w] plot[domain=44:94, samples=26, variable=\p]
-  ({139+(\p-40)*37/60}, {33-(1730.63/(8.07131-log10(\p*7.50062))-233.426-70)});
+  ({139+(\p-40)*37/70}, {33-(1730.63/(8.07131-log10(\p*7.50062))-233.426-70)});
 \path[ev] (139,23) -- (171.41,23);
 \node[lbl-s,c] at (156,22.2) {T2 LIMIT 80 °C};
-\path[dot] (149.17,18.7) circle[radius=0.5];  % a marked point: 56.5 kPa, 84.3 °C
-\path[w] (148.27,9.1) -- (150.07,10.9);
-\path[w] (148.27,10.9) -- (150.07,9.1);  % an X: a state to avoid (93 °C at 56.5 kPa)
-\path[wa] (171.41,16.4) -- (171.41,25.4);  % process path between stations
+\path[dot] (147.72,18.54) circle[radius=0.5];  % a marked point: 56.5 kPa, 84.5 °C
+\path[w] (146.82,9.1) -- (148.62,10.9);
+\path[w] (146.82,10.9) -- (148.62,9.1);  % an X: a state to avoid (93 °C at 56.5 kPa)
+\path[wa] (171.41,16.4) -- (171.41,25.4);  % process path at 101.3 kPa (the sump)
 ```
 

@@ -87,7 +87,7 @@ Fixed furniture:
 
 | Role | Face | Size | Notes |
 |---|---|---|---|
-| Running head, body, captions, tables, notices | Iowan Old Style, letter-spaced 0.055em | 8 pt / 1.33 | Stands in for the IBM Selectric proportional typewriter text of the AOH. Georgia is the fallback. Bold only in the doc number, the title and notice tags. |
+| Running head, body, captions, tables, notices | Iowan Old Style, letter-spaced 0.055em | 8 pt / 1.33 | Stands in for the IBM Selectric proportional typewriter text of the AOH. TeX Gyre Pagella is the fallback. Bold only in the doc number, the title and notice tags. |
 | Paragraph headings, opener | same, caps, tracked 0.08–0.12em | 8 pt | `INTRODUCTION.` with the period, as typed. Level-4 headings are mixed case and underlined: `Clock Synchronization.` |
 | Every label inside a drawing | Routed Gothic Narrow (Leroy template lettering), caps | 2.05–2.5 mm | Callouts 2.35, secondary lines 2.05, view titles and big letters 2.5 (regular width). |
 | Figure codes, thumb tab | Routed Gothic | 2.4 mm / 8 pt | |
