@@ -4,3 +4,7 @@
 tiles/
 assets/examples/fonts/
 assets/examples/nasa-handbook.cls
+*.toc
+*.lof
+*.lot
+docs/superpowers/

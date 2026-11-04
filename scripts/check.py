@@ -1,6 +1,6 @@
 """Check a rendered handbook page PDF and cut zoomed tiles for a visual review.
 
-    uv run --no-project --with pymupdf python check.py page.pdf [--pages N] [--out DIR] [--dpi 300]
+    uv run --no-project --with pymupdf python check.py page.pdf [--pages N, 0 for any] [--out DIR] [--dpi 300]
 
 Reports page count and size, every colour used, the fonts in the file, and
 the paths of review tiles. Anything other than pure black or white is flagged,
@@ -29,7 +29,7 @@ SIZES = {"A4": (210, 297), "US Letter": (215.9, 279.4)}
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("pdf")
-    ap.add_argument("--pages", type=int, default=1, help="expected page count")
+    ap.add_argument("--pages", type=int, default=1, help="expected page count, 0 for any")
     ap.add_argument("--out", help="folder for the tiles (default: a new temp folder)")
     ap.add_argument("--dpi", type=int, default=300, help="tile resolution")
     args = ap.parse_args()
@@ -38,7 +38,7 @@ def main() -> int:
     problems = []
 
     print(f"pages: {doc.page_count}")
-    if doc.page_count != args.pages:
+    if args.pages and doc.page_count != args.pages:
         problems.append(f"expected {args.pages} page(s), got {doc.page_count}")
 
     out = Path(args.out) if args.out else Path(tempfile.mkdtemp(prefix="nasa-handbook-check-"))
